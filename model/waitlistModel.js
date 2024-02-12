@@ -8,11 +8,13 @@ const WaitlistSchema = new Schema({
     },
     email:{
         type:String,
-        required: true
+        required: true,
+        unique:true
     },
     phoneNumber:{
         type: String,
-        required: true
+        required: true,
+        unique:true
     },
     Designation: {
         type:String,
