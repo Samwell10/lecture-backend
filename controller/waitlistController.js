@@ -4,8 +4,9 @@ const mongoose = require('mongoose')
 const postWaitlist = async(req, res)=>{
     const {name, email, phoneNumber, Designation} = req.body;
     try{
-        let userExist = await waitlistModel.findOne({email: email, phoneNumber: phoneNumber});
-        if(userExist){
+        let userExist = await waitlistModel.findOne({email: email});
+        let userExist2 = await waitlistModel.findOne({phoneNumber: phoneNumber});
+        if(userExist || userExist2){
             res.status(400).json({error:"This is user already exists"})
         }
         const Waitlist = await waitlistModel.create({name, email, phoneNumber, Designation})
